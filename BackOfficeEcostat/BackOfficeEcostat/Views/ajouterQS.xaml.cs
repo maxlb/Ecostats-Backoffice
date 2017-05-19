@@ -22,7 +22,7 @@ namespace BackOfficeEcostat.Views
     public partial class ajouterQS : Page
     {
         Controller ct;
-        questionnaire q;
+        questionnaire quest;
         int nbQ;
         List<StackPanel> ch = new List<StackPanel>();
         int j = 2;
@@ -36,7 +36,7 @@ namespace BackOfficeEcostat.Views
             nbQ = nb;
             k = i;
             erreur.Visibility = Visibility.Hidden;
-            q = ct.getQuestionnaireById(q.Id);
+            quest = ct.getQuestionnaireById(q.Id);
             soustitre.Content = "Ajout des questions : question " + i;
             if (i == nb)
             {
@@ -52,7 +52,7 @@ namespace BackOfficeEcostat.Views
             ch.Add(choix2);
             try
             {
-                List<question> AllQuestions = ct.getAllQuestionOfQuestionnaire(q.Id);
+                List<question> AllQuestions = ct.getAllQuestionOfQuestionnaire(quest.Id);
                 inputQ.Text = AllQuestions.ElementAt(i - 1).contenu;
                 idQ = AllQuestions.ElementAt(i - 1).Id;
                 List<choix> AllChoix = ct.getAllChoixOfQuestion(idQ);
@@ -100,14 +100,14 @@ namespace BackOfficeEcostat.Views
             }
             else
             {
-                question Newquestion = ct.AddQuestionOfSondage(q, inputQ.Text);
+                question Newquestion = ct.AddQuestionOfSondage(quest, inputQ.Text);
                 foreach (var choix in ch)
                 {
                     string unChoix = (choix.Children[1] as TextBox).Text;
                     ct.AddChoix(Newquestion, unChoix);
                 }
             }
-            ajouterQS page = new ajouterQS(q, nbQ, k+1);
+            ajouterQS page = new ajouterQS(quest, nbQ, k+1);
             NavigationService.Navigate(page);
         }
 
@@ -147,7 +147,7 @@ namespace BackOfficeEcostat.Views
             }
             else
             {
-                question Newquestion = ct.AddQuestionOfSondage(q, inputQ.Text);
+                question Newquestion = ct.AddQuestionOfSondage(quest, inputQ.Text);
                 foreach (var choix in ch)
                 {
                     string unChoix = (choix.Children[1] as TextBox).Text;
@@ -155,9 +155,9 @@ namespace BackOfficeEcostat.Views
                 }
             }
 
-            if (q.Id_enquete.HasValue && ajouterSE.nbrSeq >= ajouterSE.seqActuelle + 1)
+            if (quest.Id_enquete.HasValue && ajouterSE.nbrSeq >= ajouterSE.seqActuelle + 1)
             {
-                NavigationService.Navigate(new ajouterSE(q.enquete1, ajouterSE.nbrSeq, ajouterSE.seqActuelle + 1));
+                NavigationService.Navigate(new ajouterSE(quest.enquete1, ajouterSE.nbrSeq, ajouterSE.seqActuelle + 1));
             }
             else
             {

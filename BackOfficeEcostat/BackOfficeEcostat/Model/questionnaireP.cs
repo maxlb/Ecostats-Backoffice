@@ -16,7 +16,7 @@ namespace BackOfficeEcostat.Model
             Description = d;
             Disponible = dispo;
             theme = db.themes.Find(th.Id);
-            enquete1 = e;
+            enquete1 = db.enquetes.Find(e.Id);
             Id_Theme = th.Id;
             questions = new List<question>(nbQ);
             sondages = new List<sondage>();
