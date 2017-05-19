@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="37d6c0b5f6dd4b50988a612e972a6c8f" Name="Diagram1">
+        <EntityTypeShape EntityType="ecostatbddModel.choix" Width="1.5" PointX="7.125" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecostatbddModel.enquete" Width="1.5" PointX="1.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecostatbddModel.personne" Width="1.5" PointX="7.125" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecostatbddModel.question" Width="1.5" PointX="4.875" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecostatbddModel.questionnaire" Width="1.5" PointX="2.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecostatbddModel.sondage" Width="1.5" PointX="3.875" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecostatbddModel.theme" Width="1.5" PointX="0.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecostatbddModel.user" Width="1.5" PointX="9.375" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ecostatbddModel.visiteur" Width="1.5" PointX="9.375" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="ecostatbddModel.FK_Choix_Id_Question" ManuallyRouted="false" />
+        <AssociationConnector Association="ecostatbddModel.FK_user_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="ecostatbddModel.FK_Visiteur_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="ecostatbddModel.FK_Question_Id_Questionnaire" ManuallyRouted="false" />
+        <AssociationConnector Association="ecostatbddModel.FK_Questionnaire_Id_Theme" ManuallyRouted="false" />
+        <AssociationConnector Association="ecostatbddModel.Foreign_Key_Sondage" ManuallyRouted="false" />
+        <AssociationConnector Association="ecostatbddModel.FK_Theme_Id_1" ManuallyRouted="false" />
+        <AssociationConnector Association="ecostatbddModel.choisir" ManuallyRouted="false" />
+        <AssociationConnector Association="ecostatbddModel.FK_Enquete_Theme" />
+        <EntityTypeShape EntityType="ecostatbddModel.questionnairecomplete" Width="1.5" PointX="2.875" PointY="10.875" />
+        <AssociationConnector Association="ecostatbddModel.FK_Questionnaires_Enquete" />
+        <AssociationConnector Association="ecostatbddModel.FK_SondageComplete_Id1" />
+        <AssociationConnector Association="ecostatbddModel.FK_SondageComplete_Id_Questionnaire1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

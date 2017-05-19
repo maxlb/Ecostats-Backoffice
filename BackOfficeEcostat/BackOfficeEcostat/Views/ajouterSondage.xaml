@@ -1,0 +1,63 @@
+﻿<Page x:Class="BackOfficeEcostat.Views.ajouterSondage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BackOfficeEcostat.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="ajouterSondage">
+
+    <Grid Background="#FFD6D6D6">
+
+        <Rectangle Fill="Gainsboro" HorizontalAlignment="Stretch" Height="80" Stroke="Black" VerticalAlignment="Top"/>
+
+        <Label  Style="{StaticResource TitleText}" x:Name="titre" Content="SYSTÈME DE GESTION D'ECOSTAT"/>
+
+        <Label  Style="{StaticResource TitleText}" x:Name="soustitre" Content="Ajout d'un sondage" Margin="0,90,0,0"/>
+
+        <Label x:Name="titreSondage" Content="Intitulé du sondage : " HorizontalAlignment="Left" Margin="231,141,0,0" FontFamily="Segoe WP SemiLight" />
+        <TextBox x:Name="titreChoisi" HorizontalAlignment="Left" Margin="391,141,0,0" Width="285" Height="34" VerticalAlignment="Top"  />
+
+        <Label x:Name="choixTheme" Content="Choisir le thème du sondage : "  Height="34" Margin="32,239,0,0" HorizontalAlignment="Left" />
+        <ComboBox x:Name="themes"  Margin="252,239,0,0" Padding="2,4.5,0,0" Width="220" LostMouseCapture="themes_LostMouseCapture"/>
+
+        <Label x:Name="themeParent" Content="Selectionner un thème parent : "  HorizontalAlignment="Left" Height="34" Margin="32,278,0,0"/>
+        <ComboBox x:Name="themesParents" Margin="252,278,0,0" Padding="2,4.5,0,0" Width="220"/>
+
+        <Label x:Name="description" Content="Entrez une brève description/explication du sondage :" HorizontalAlignment="Left" Height="34" Margin="503,186,0,0"/>
+        <TextBox x:Name="inputDescription" HorizontalAlignment="Left" Height="169" Margin="503,225,0,0" VerticalAlignment="Top" Width="370"/>
+
+        <StackPanel x:Name="remuneration" Orientation="Horizontal" Margin="32,317,0,0" Width="278" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <TextBlock  Style="{StaticResource rem}" Margin="0,0,0,0" Width="auto" Height="auto" VerticalAlignment="Top">
+                <Run Text="Rémunération du sondage : "/>
+                <InlineUIContainer BaselineAlignment="Center">
+                    <TextBox x:Name="inputRemuneration" Text="00" Width="40"/>
+                </InlineUIContainer>
+                <Run Text=" €"/>
+            </TextBlock>
+        </StackPanel>
+
+        <CheckBox x:Name="disponibilite" Style="{StaticResource check}" Padding="5,-4,0,0" Content="Rendre le sondage immédiatement disponible" Margin="32,372,0,0" />
+        
+        <Label x:Name="nbQ" Content="Nombre de questions du sondage :" HorizontalAlignment="Left"  Margin="301,438,0,0" />
+        <TextBox x:Name="inputNbQ" HorizontalAlignment="Left"  Margin="553,438,0,0" Width="43" Height="34" VerticalAlignment="Top"/>
+
+        <Button x:Name="retour" Command="{x:Static NavigationCommands.BrowseBack}" Height="59" Margin="50,0,0,30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="auto">
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="image" Source="retour.png"/>
+                <TextBlock Style="{StaticResource ButtonContent}"><Run Text="Retour "/></TextBlock>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="questions" Height="59" Margin="0,0,50,30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="auto" Click="questions_Click">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource ButtonContent}"><Run Text=" Poursuivre"/></TextBlock>
+                <Image x:Name="image1" Source="suivant.png" />
+            </StackPanel>
+        </Button>
+        <Label x:Name="erreur" Content="Veuillez renseigner les informations manquantes" Margin="0,526,0,0" FontFamily="Segoe UI" Foreground="Red" />
+
+
+    </Grid>
+</Page>

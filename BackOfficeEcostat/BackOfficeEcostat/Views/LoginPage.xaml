@@ -1,0 +1,24 @@
+﻿<Window x:Class="BackOfficeEcostat.LoginPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BackOfficeEcostat"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Connexion" Height="281.892" Width="351.081" Background="White">
+    <Grid x:Name="fond" Background="#FFD6D6D6">
+        <Label Style="{StaticResource TitleText}" x:Name="titre" Content="ECOSTAT - BACKOFFICE" />
+        
+        <Label x:Name="description" Content="Pour continuer, veuillez vous connecter :"  Height="30" Margin="0,60,0,0" VerticalAlignment="Top" Width="279"/>
+        
+        <Label x:Name="pseudo" Content="Pseudo :" HorizontalAlignment="Left" Height="35" Margin="50,104,0,0" VerticalAlignment="Top" Width="110"/>
+        <TextBox x:Name="loginTextBox" HorizontalAlignment="Left" Height="35" Margin="165,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" FontFamily="Segoe UI Light" FontSize="16" />
+
+        <Label x:Name="mdp" Content="Mot de passe :" HorizontalAlignment="Left" Height="35" Margin="50,144,0,0" VerticalAlignment="Top" Width="110"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Height="35" Margin="165,144,0,0" VerticalAlignment="Top" Width="124" FontFamily="Segoe UI Light" FontSize="16"/>
+
+        <Button x:Name="connexion" Content=" Se connecter " HorizontalAlignment="Center" Height="31" Margin="0,191,0,0" VerticalAlignment="Top" IsCancel="True" Click="connexion_Click" Background="White" FontSize="16" FontFamily="Segoe UI Light"/>
+
+    </Grid>
+</Window>

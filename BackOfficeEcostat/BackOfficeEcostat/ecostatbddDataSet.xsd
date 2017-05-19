@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ecostatbddDataSet" targetNamespace="http://tempuri.org/ecostatbddDataSet.xsd" xmlns:mstns="http://tempuri.org/ecostatbddDataSet.xsd" xmlns="http://tempuri.org/ecostatbddDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ecostatbddConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ecostatbddConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.BackOfficeEcostat.Properties.Settings.GlobalReference.Default.ecostatbddConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="choisirTableAdapter" GeneratorDataComponentClassName="choisirTableAdapter" Name="choisir" UserDataComponentName="choisirTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.choisir" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `Id_Personne` FROM `choisir`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="choixTableAdapter" GeneratorDataComponentClassName="choixTableAdapter" Name="choix" UserDataComponentName="choixTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.choix" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `contenu`, `Id_Question` FROM `choix`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="enqueteTableAdapter" GeneratorDataComponentClassName="enqueteTableAdapter" Name="enquete" UserDataComponentName="enqueteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.enquete" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id` FROM `enquete`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="personneTableAdapter" GeneratorDataComponentClassName="personneTableAdapter" Name="personne" UserDataComponentName="personneTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.personne" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id` FROM `personne`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="questionTableAdapter" GeneratorDataComponentClassName="questionTableAdapter" Name="question" UserDataComponentName="questionTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.question" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `contenu`, `Id_Questionnaire`, `Id_Sequence` FROM `question`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="questionnaireTableAdapter" GeneratorDataComponentClassName="questionnaireTableAdapter" Name="questionnaire" UserDataComponentName="questionnaireTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.questionnaire" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `Description`, `Titre`, `Id_Theme` FROM `questionnaire`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sequenceTableAdapter" GeneratorDataComponentClassName="sequenceTableAdapter" Name="sequence" UserDataComponentName="sequenceTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.sequence" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `description`, `titre`, `Id_Questionnaire` FROM `sequence`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sequencecompleteTableAdapter" GeneratorDataComponentClassName="sequencecompleteTableAdapter" Name="sequencecomplete" UserDataComponentName="sequencecompleteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.sequencecomplete" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `Id_Sequence` FROM `sequencecomplete`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sondageTableAdapter" GeneratorDataComponentClassName="sondageTableAdapter" Name="sondage" UserDataComponentName="sondageTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.sondage" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `Remuneration`, `Id_questionnaire` FROM `sondage`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="sondagecompleteTableAdapter" GeneratorDataComponentClassName="sondagecompleteTableAdapter" Name="sondagecomplete" UserDataComponentName="sondagecompleteTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.sondagecomplete" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `dateReponse`, `localisation`, `Id`, `Id_Questionnaire` FROM `sondagecomplete`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="themeTableAdapter" GeneratorDataComponentClassName="themeTableAdapter" Name="theme" UserDataComponentName="themeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.theme" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `nom`, `Id_1` FROM `theme`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="userTableAdapter" GeneratorDataComponentClassName="userTableAdapter" Name="user" UserDataComponentName="userTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.`user`" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `pseudo`, `mdp`, `mail`, `Id` FROM `user`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="visiteurTableAdapter" GeneratorDataComponentClassName="visiteurTableAdapter" Name="visiteur" UserDataComponentName="visiteurTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ecostatbddConnectionString (Settings)" DbObjectName="ecostatbdd.visiteur" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `adresseIP`, `nom`, `prenom`, `Id` FROM `visiteur`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ecostatbddDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ecostatbddDataSet" msprop:Generator_UserDSName="ecostatbddDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="choisir" msprop:Generator_TableClassName="choisirDataTable" msprop:Generator_TableVarName="tablechoisir" msprop:Generator_TablePropName="choisir" msprop:Generator_RowDeletingName="choisirRowDeleting" msprop:Generator_RowChangingName="choisirRowChanging" msprop:Generator_RowEvHandlerName="choisirRowChangeEventHandler" msprop:Generator_RowDeletedName="choisirRowDeleted" msprop:Generator_UserTableName="choisir" msprop:Generator_RowChangedName="choisirRowChanged" msprop:Generator_RowEvArgName="choisirRowChangeEvent" msprop:Generator_RowClassName="choisirRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="choix" msprop:Generator_TableClassName="choixDataTable" msprop:Generator_TableVarName="tablechoix" msprop:Generator_TablePropName="choix" msprop:Generator_RowDeletingName="choixRowDeleting" msprop:Generator_RowChangingName="choixRowChanging" msprop:Generator_RowEvHandlerName="choixRowChangeEventHandler" msprop:Generator_RowDeletedName="choixRowDeleted" msprop:Generator_UserTableName="choix" msprop:Generator_RowChangedName="choixRowChanged" msprop:Generator_RowEvArgName="choixRowChangeEvent" msprop:Generator_RowClassName="choixRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="enquete" msprop:Generator_TableClassName="enqueteDataTable" msprop:Generator_TableVarName="tableenquete" msprop:Generator_TablePropName="enquete" msprop:Generator_RowDeletingName="enqueteRowDeleting" msprop:Generator_RowChangingName="enqueteRowChanging" msprop:Generator_RowEvHandlerName="enqueteRowChangeEventHandler" msprop:Generator_RowDeletedName="enqueteRowDeleted" msprop:Generator_UserTableName="enquete" msprop:Generator_RowChangedName="enqueteRowChanged" msprop:Generator_RowEvArgName="enqueteRowChangeEvent" msprop:Generator_RowClassName="enqueteRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="personne" msprop:Generator_TableClassName="personneDataTable" msprop:Generator_TableVarName="tablepersonne" msprop:Generator_TablePropName="personne" msprop:Generator_RowDeletingName="personneRowDeleting" msprop:Generator_RowChangingName="personneRowChanging" msprop:Generator_RowEvHandlerName="personneRowChangeEventHandler" msprop:Generator_RowDeletedName="personneRowDeleted" msprop:Generator_UserTableName="personne" msprop:Generator_RowChangedName="personneRowChanged" msprop:Generator_RowEvArgName="personneRowChangeEvent" msprop:Generator_RowClassName="personneRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="question" msprop:Generator_TableClassName="questionDataTable" msprop:Generator_TableVarName="tablequestion" msprop:Generator_TablePropName="question" msprop:Generator_RowDeletingName="questionRowDeleting" msprop:Generator_RowChangingName="questionRowChanging" msprop:Generator_RowEvHandlerName="questionRowChangeEventHandler" msprop:Generator_RowDeletedName="questionRowDeleted" msprop:Generator_UserTableName="question" msprop:Generator_RowChangedName="questionRowChanged" msprop:Generator_RowEvArgName="questionRowChangeEvent" msprop:Generator_RowClassName="questionRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="questionnaire" msprop:Generator_TableClassName="questionnaireDataTable" msprop:Generator_TableVarName="tablequestionnaire" msprop:Generator_TablePropName="questionnaire" msprop:Generator_RowDeletingName="questionnaireRowDeleting" msprop:Generator_RowChangingName="questionnaireRowChanging" msprop:Generator_RowEvHandlerName="questionnaireRowChangeEventHandler" msprop:Generator_RowDeletedName="questionnaireRowDeleted" msprop:Generator_UserTableName="questionnaire" msprop:Generator_RowChangedName="questionnaireRowChanged" msprop:Generator_RowEvArgName="questionnaireRowChangeEvent" msprop:Generator_RowClassName="questionnaireRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sequence" msprop:Generator_TableClassName="sequenceDataTable" msprop:Generator_TableVarName="tablesequence" msprop:Generator_TablePropName="sequence" msprop:Generator_RowDeletingName="sequenceRowDeleting" msprop:Generator_RowChangingName="sequenceRowChanging" msprop:Generator_RowEvHandlerName="sequenceRowChangeEventHandler" msprop:Generator_RowDeletedName="sequenceRowDeleted" msprop:Generator_UserTableName="sequence" msprop:Generator_RowChangedName="sequenceRowChanged" msprop:Generator_RowEvArgName="sequenceRowChangeEvent" msprop:Generator_RowClassName="sequenceRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sequencecomplete" msprop:Generator_TableClassName="sequencecompleteDataTable" msprop:Generator_TableVarName="tablesequencecomplete" msprop:Generator_TablePropName="sequencecomplete" msprop:Generator_RowDeletingName="sequencecompleteRowDeleting" msprop:Generator_RowChangingName="sequencecompleteRowChanging" msprop:Generator_RowEvHandlerName="sequencecompleteRowChangeEventHandler" msprop:Generator_RowDeletedName="sequencecompleteRowDeleted" msprop:Generator_UserTableName="sequencecomplete" msprop:Generator_RowChangedName="sequencecompleteRowChanged" msprop:Generator_RowEvArgName="sequencecompleteRowChangeEvent" msprop:Generator_RowClassName="sequencecompleteRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sondage" msprop:Generator_TableClassName="sondageDataTable" msprop:Generator_TableVarName="tablesondage" msprop:Generator_TablePropName="sondage" msprop:Generator_RowDeletingName="sondageRowDeleting" msprop:Generator_RowChangingName="sondageRowChanging" msprop:Generator_RowEvHandlerName="sondageRowChangeEventHandler" msprop:Generator_RowDeletedName="sondageRowDeleted" msprop:Generator_UserTableName="sondage" msprop:Generator_RowChangedName="sondageRowChanged" msprop:Generator_RowEvArgName="sondageRowChangeEvent" msprop:Generator_RowClassName="sondageRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="sondagecomplete" msprop:Generator_TableClassName="sondagecompleteDataTable" msprop:Generator_TableVarName="tablesondagecomplete" msprop:Generator_TablePropName="sondagecomplete" msprop:Generator_RowDeletingName="sondagecompleteRowDeleting" msprop:Generator_RowChangingName="sondagecompleteRowChanging" msprop:Generator_RowEvHandlerName="sondagecompleteRowChangeEventHandler" msprop:Generator_RowDeletedName="sondagecompleteRowDeleted" msprop:Generator_UserTableName="sondagecomplete" msprop:Generator_RowChangedName="sondagecompleteRowChanged" msprop:Generator_RowEvArgName="sondagecompleteRowChangeEvent" msprop:Generator_RowClassName="sondagecompleteRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="theme" msprop:Generator_TableClassName="themeDataTable" msprop:Generator_TableVarName="tabletheme" msprop:Generator_TablePropName="theme" msprop:Generator_RowDeletingName="themeRowDeleting" msprop:Generator_RowChangingName="themeRowChanging" msprop:Generator_RowEvHandlerName="themeRowChangeEventHandler" msprop:Generator_RowDeletedName="themeRowDeleted" msprop:Generator_UserTableName="theme" msprop:Generator_RowChangedName="themeRowChanged" msprop:Generator_RowEvArgName="themeRowChangeEvent" msprop:Generator_RowClassName="themeRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="user" msprop:Generator_TableClassName="userDataTable" msprop:Generator_TableVarName="tableuser" msprop:Generator_TablePropName="user" msprop:Generator_RowDeletingName="userRowDeleting" msprop:Generator_RowChangingName="userRowChanging" msprop:Generator_RowEvHandlerName="userRowChangeEventHandler" msprop:Generator_RowDeletedName="userRowDeleted" msprop:Generator_UserTableName="user" msprop:Generator_RowChangedName="userRowChanged" msprop:Generator_RowEvArgName="userRowChangeEvent" msprop:Generator_RowClassName="userRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="visiteur" msprop:Generator_TableClassName="visiteurDataTable" msprop:Generator_TableVarName="tablevisiteur" msprop:Generator_TablePropName="visiteur" msprop:Generator_RowDeletingName="visiteurRowDeleting" msprop:Generator_RowChangingName="visiteurRowChanging" msprop:Generator_RowEvHandlerName="visiteurRowChangeEventHandler" msprop:Generator_RowDeletedName="visiteurRowDeleted" msprop:Generator_UserTableName="visiteur" msprop:Generator_RowChangedName="visiteurRowChanged" msprop:Generator_RowEvArgName="visiteurRowChangeEvent" msprop:Generator_RowClassName="visiteurRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

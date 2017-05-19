@@ -1,0 +1,768 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ecostatbddModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="choisir">
+          <Key>
+            <PropertyRef Name="Id_choix" />
+            <PropertyRef Name="Id_Personne" />
+          </Key>
+          <Property Name="Id_choix" Type="int" Nullable="false" />
+          <Property Name="Id_Personne" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="choix">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="contenu" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Id_Question" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="enquete">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_Theme" Type="int" Nullable="false" />
+          <Property Name="titre" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="disponible" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personne">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="contenu" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Id_Questionnaire" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="questionnaire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="text" />
+          <Property Name="Titre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_Theme" Type="int" Nullable="false" />
+          <Property Name="Disponible" Type="bool" Nullable="false" />
+          <Property Name="Id_enquete" Type="int" />
+        </EntityType>
+        <EntityType Name="questionnairecomplete">
+          <Key>
+            <PropertyRef Name="Id_personne" />
+            <PropertyRef Name="Id_Questionnaire" />
+          </Key>
+          <Property Name="dateReponse" Type="date" />
+          <Property Name="localisation" Type="varchar" MaxLength="100" />
+          <Property Name="Id_personne" Type="int" Nullable="false" />
+          <Property Name="Id_Questionnaire" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sondage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Remuneration" Type="int" Nullable="false" />
+          <Property Name="Id_questionnaire" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="theme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Id_1" Type="int" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="pseudo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="mdp" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="mail" Type="varchar" MaxLength="100" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="visiteur">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="adresseIP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="50" />
+          <Property Name="prenom" Type="varchar" MaxLength="50" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_choisir_Id">
+          <End Role="choix" Type="Self.choix" Multiplicity="1" />
+          <End Role="choisir" Type="Self.choisir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="choix">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="choisir">
+              <PropertyRef Name="Id_choix" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_choisir_Id_Personne">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="choisir" Type="Self.choisir" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="choisir">
+              <PropertyRef Name="Id_Personne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Choix_Id_Question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="choix" Type="Self.choix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="choix">
+              <PropertyRef Name="Id_Question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Enquete_Theme">
+          <End Role="theme" Type="Self.theme" Multiplicity="1" />
+          <End Role="enquete" Type="Self.enquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="theme">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="enquete">
+              <PropertyRef Name="Id_Theme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Id_Questionnaire">
+          <End Role="questionnaire" Type="Self.questionnaire" Multiplicity="1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="Id_Questionnaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionnaire_Id_Theme">
+          <End Role="theme" Type="Self.theme" Multiplicity="1" />
+          <End Role="questionnaire" Type="Self.questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="theme">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="questionnaire">
+              <PropertyRef Name="Id_Theme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionnaires_Enquete">
+          <End Role="enquete" Type="Self.enquete" Multiplicity="0..1" />
+          <End Role="questionnaire" Type="Self.questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="enquete">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="questionnaire">
+              <PropertyRef Name="Id_enquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SondageComplete_Id">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="questionnairecomplete" Type="Self.questionnairecomplete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="questionnairecomplete">
+              <PropertyRef Name="Id_personne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SondageComplete_Id_Questionnaire">
+          <End Role="questionnaire" Type="Self.questionnaire" Multiplicity="1" />
+          <End Role="questionnairecomplete" Type="Self.questionnairecomplete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="questionnairecomplete">
+              <PropertyRef Name="Id_Questionnaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Theme_Id_1">
+          <End Role="theme" Type="Self.theme" Multiplicity="0..1" />
+          <End Role="theme1" Type="Self.theme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="theme">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="theme1">
+              <PropertyRef Name="Id_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_Id">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visiteur_Id">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="visiteur" Type="Self.visiteur" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="visiteur">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Foreign_Key_Sondage">
+          <End Role="questionnaire" Type="Self.questionnaire" Multiplicity="1" />
+          <End Role="sondage" Type="Self.sondage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sondage">
+              <PropertyRef Name="Id_questionnaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ecostatbddModelStoreContainer">
+          <EntitySet Name="choisir" EntityType="Self.choisir" Schema="ecostatbdd" store:Type="Tables" />
+          <EntitySet Name="choix" EntityType="Self.choix" Schema="ecostatbdd" store:Type="Tables" />
+          <EntitySet Name="enquete" EntityType="Self.enquete" Schema="ecostatbdd" store:Type="Tables" />
+          <EntitySet Name="personne" EntityType="Self.personne" Schema="ecostatbdd" store:Type="Tables" />
+          <EntitySet Name="question" EntityType="Self.question" Schema="ecostatbdd" store:Type="Tables" />
+          <EntitySet Name="questionnaire" EntityType="Self.questionnaire" Schema="ecostatbdd" store:Type="Tables" />
+          <EntitySet Name="questionnairecomplete" EntityType="Self.questionnairecomplete" Schema="ecostatbdd" store:Type="Tables" />
+          <EntitySet Name="sondage" EntityType="Self.sondage" Schema="ecostatbdd" store:Type="Tables" />
+          <EntitySet Name="theme" EntityType="Self.theme" Schema="ecostatbdd" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="ecostatbdd" store:Type="Tables" />
+          <EntitySet Name="visiteur" EntityType="Self.visiteur" Schema="ecostatbdd" store:Type="Tables" />
+          <AssociationSet Name="FK_choisir_Id" Association="Self.FK_choisir_Id">
+            <End Role="choix" EntitySet="choix" />
+            <End Role="choisir" EntitySet="choisir" />
+          </AssociationSet>
+          <AssociationSet Name="FK_choisir_Id_Personne" Association="Self.FK_choisir_Id_Personne">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="choisir" EntitySet="choisir" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Choix_Id_Question" Association="Self.FK_Choix_Id_Question">
+            <End Role="question" EntitySet="question" />
+            <End Role="choix" EntitySet="choix" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enquete_Theme" Association="Self.FK_Enquete_Theme">
+            <End Role="theme" EntitySet="theme" />
+            <End Role="enquete" EntitySet="enquete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Id_Questionnaire" Association="Self.FK_Question_Id_Questionnaire">
+            <End Role="questionnaire" EntitySet="questionnaire" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionnaire_Id_Theme" Association="Self.FK_Questionnaire_Id_Theme">
+            <End Role="theme" EntitySet="theme" />
+            <End Role="questionnaire" EntitySet="questionnaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionnaires_Enquete" Association="Self.FK_Questionnaires_Enquete">
+            <End Role="enquete" EntitySet="enquete" />
+            <End Role="questionnaire" EntitySet="questionnaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SondageComplete_Id" Association="Self.FK_SondageComplete_Id">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="questionnairecomplete" EntitySet="questionnairecomplete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SondageComplete_Id_Questionnaire" Association="Self.FK_SondageComplete_Id_Questionnaire">
+            <End Role="questionnaire" EntitySet="questionnaire" />
+            <End Role="questionnairecomplete" EntitySet="questionnairecomplete" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Theme_Id_1" Association="Self.FK_Theme_Id_1">
+            <End Role="theme" EntitySet="theme" />
+            <End Role="theme1" EntitySet="theme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_Id" Association="Self.FK_user_Id">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visiteur_Id" Association="Self.FK_Visiteur_Id">
+            <End Role="personne" EntitySet="personne" />
+            <End Role="visiteur" EntitySet="visiteur" />
+          </AssociationSet>
+          <AssociationSet Name="Foreign_Key_Sondage" Association="Self.Foreign_Key_Sondage">
+            <End Role="questionnaire" EntitySet="questionnaire" />
+            <End Role="sondage" EntitySet="sondage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ecostatbddModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="choix">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="contenu" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Question" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="question" Relationship="Self.FK_Choix_Id_Question" FromRole="choix" ToRole="question" />
+          <NavigationProperty Name="personnes" Relationship="Self.choisir" FromRole="choix" ToRole="personne" />
+        </EntityType>
+        <EntityType Name="enquete">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_Theme" Type="Int32" Nullable="false" />
+          <Property Name="titre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="theme" Relationship="ecostatbddModel.FK_Enquete_Theme" FromRole="enquete" ToRole="theme" />
+          <NavigationProperty Name="questionnaires" Relationship="ecostatbddModel.FK_Questionnaires_Enquete" FromRole="enquete" ToRole="questionnaire" />
+          <Property Name="disponible" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personne">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_Id" FromRole="personne" ToRole="user" />
+          <NavigationProperty Name="visiteur" Relationship="Self.FK_Visiteur_Id" FromRole="personne" ToRole="visiteur" />
+          <NavigationProperty Name="choixes" Relationship="Self.choisir" FromRole="personne" ToRole="choix" />
+          <NavigationProperty Name="questionnairecompletes" Relationship="ecostatbddModel.FK_SondageComplete_Id1" FromRole="personne" ToRole="questionnairecomplete" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="contenu" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Questionnaire" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="choixes" Relationship="Self.FK_Choix_Id_Question" FromRole="question" ToRole="choix" />
+          <NavigationProperty Name="questionnaire" Relationship="Self.FK_Question_Id_Questionnaire" FromRole="question" ToRole="questionnaire" />
+        </EntityType>
+        <EntityType Name="questionnaire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Titre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_Theme" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="questions" Relationship="Self.FK_Question_Id_Questionnaire" FromRole="questionnaire" ToRole="question" />
+          <NavigationProperty Name="theme" Relationship="Self.FK_Questionnaire_Id_Theme" FromRole="questionnaire" ToRole="theme" />
+          <NavigationProperty Name="sondages" Relationship="Self.Foreign_Key_Sondage" FromRole="questionnaire" ToRole="sondage" />
+          <Property Name="Disponible" Type="Boolean" Nullable="false" />
+          <Property Name="Id_enquete" Type="Int32" />
+          <NavigationProperty Name="enquete1" Relationship="ecostatbddModel.FK_Questionnaires_Enquete" FromRole="questionnaire" ToRole="enquete" />
+          <NavigationProperty Name="questionnairecompletes" Relationship="ecostatbddModel.FK_SondageComplete_Id_Questionnaire1" FromRole="questionnaire" ToRole="questionnairecomplete" />
+        </EntityType>
+        <EntityType Name="sondage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Remuneration" Type="Int32" Nullable="false" />
+          <Property Name="Id_questionnaire" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="questionnaire" Relationship="Self.Foreign_Key_Sondage" FromRole="sondage" ToRole="questionnaire" />
+        </EntityType>
+        <EntityType Name="theme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id_1" Type="Int32" />
+          <NavigationProperty Name="questionnaires" Relationship="Self.FK_Questionnaire_Id_Theme" FromRole="theme" ToRole="questionnaire" />
+          <NavigationProperty Name="theme1" Relationship="Self.FK_Theme_Id_1" FromRole="theme" ToRole="theme1" />
+          <NavigationProperty Name="theme2" Relationship="Self.FK_Theme_Id_1" FromRole="theme1" ToRole="theme" />
+          <NavigationProperty Name="enquetes" Relationship="ecostatbddModel.FK_Enquete_Theme" FromRole="theme" ToRole="enquete" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="pseudo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mdp" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="personne" Relationship="Self.FK_user_Id" FromRole="user" ToRole="personne" />
+        </EntityType>
+        <EntityType Name="visiteur">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="adresseIP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="personne" Relationship="Self.FK_Visiteur_Id" FromRole="visiteur" ToRole="personne" />
+        </EntityType>
+        <Association Name="FK_Choix_Id_Question">
+          <End Role="question" Type="Self.question" Multiplicity="1" />
+          <End Role="choix" Type="Self.choix" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="question">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="choix">
+              <PropertyRef Name="Id_Question" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_Id">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Visiteur_Id">
+          <End Role="personne" Type="Self.personne" Multiplicity="1" />
+          <End Role="visiteur" Type="Self.visiteur" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="visiteur">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Id_Questionnaire">
+          <End Role="questionnaire" Type="Self.questionnaire" Multiplicity="1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="Id_Questionnaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionnaire_Id_Theme">
+          <End Role="theme" Type="Self.theme" Multiplicity="1" />
+          <End Role="questionnaire" Type="Self.questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="theme">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="questionnaire">
+              <PropertyRef Name="Id_Theme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Foreign_Key_Sondage">
+          <End Role="questionnaire" Type="Self.questionnaire" Multiplicity="1" />
+          <End Role="sondage" Type="Self.sondage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="sondage">
+              <PropertyRef Name="Id_questionnaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Theme_Id_1">
+          <End Role="theme" Type="Self.theme" Multiplicity="0..1" />
+          <End Role="theme1" Type="Self.theme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="theme">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="theme1">
+              <PropertyRef Name="Id_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="choisir">
+          <End Role="choix" Type="Self.choix" Multiplicity="*" />
+          <End Role="personne" Type="Self.personne" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ecostatbddEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="choixes" EntityType="Self.choix" />
+          <EntitySet Name="enquetes" EntityType="Self.enquete" />
+          <EntitySet Name="personnes" EntityType="Self.personne" />
+          <EntitySet Name="questions" EntityType="Self.question" />
+          <EntitySet Name="questionnaires" EntityType="Self.questionnaire" />
+          <EntitySet Name="sondages" EntityType="Self.sondage" />
+          <EntitySet Name="themes" EntityType="Self.theme" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="visiteurs" EntityType="Self.visiteur" />
+          <AssociationSet Name="FK_Choix_Id_Question" Association="Self.FK_Choix_Id_Question">
+            <End Role="question" EntitySet="questions" />
+            <End Role="choix" EntitySet="choixes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_Id" Association="Self.FK_user_Id">
+            <End Role="personne" EntitySet="personnes" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Visiteur_Id" Association="Self.FK_Visiteur_Id">
+            <End Role="personne" EntitySet="personnes" />
+            <End Role="visiteur" EntitySet="visiteurs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Id_Questionnaire" Association="Self.FK_Question_Id_Questionnaire">
+            <End Role="questionnaire" EntitySet="questionnaires" />
+            <End Role="question" EntitySet="questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionnaire_Id_Theme" Association="Self.FK_Questionnaire_Id_Theme">
+            <End Role="theme" EntitySet="themes" />
+            <End Role="questionnaire" EntitySet="questionnaires" />
+          </AssociationSet>
+          <AssociationSet Name="Foreign_Key_Sondage" Association="Self.Foreign_Key_Sondage">
+            <End Role="questionnaire" EntitySet="questionnaires" />
+            <End Role="sondage" EntitySet="sondages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Theme_Id_1" Association="Self.FK_Theme_Id_1">
+            <End Role="theme" EntitySet="themes" />
+            <End Role="theme1" EntitySet="themes" />
+          </AssociationSet>
+          <AssociationSet Name="choisir" Association="Self.choisir">
+            <End Role="choix" EntitySet="choixes" />
+            <End Role="personne" EntitySet="personnes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Enquete_Theme" Association="ecostatbddModel.FK_Enquete_Theme">
+            <End Role="theme" EntitySet="themes" />
+            <End Role="enquete" EntitySet="enquetes" />
+          </AssociationSet>
+          <EntitySet Name="questionnairecompletes" EntityType="ecostatbddModel.questionnairecomplete" />
+          <AssociationSet Name="FK_Questionnaires_Enquete" Association="ecostatbddModel.FK_Questionnaires_Enquete">
+            <End Role="enquete" EntitySet="enquetes" />
+            <End Role="questionnaire" EntitySet="questionnaires" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SondageComplete_Id1" Association="ecostatbddModel.FK_SondageComplete_Id1">
+            <End Role="personne" EntitySet="personnes" />
+            <End Role="questionnairecomplete" EntitySet="questionnairecompletes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SondageComplete_Id_Questionnaire1" Association="ecostatbddModel.FK_SondageComplete_Id_Questionnaire1">
+            <End Role="questionnaire" EntitySet="questionnaires" />
+            <End Role="questionnairecomplete" EntitySet="questionnairecompletes" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Enquete_Theme">
+          <End Type="ecostatbddModel.theme" Role="theme" Multiplicity="1" />
+          <End Type="ecostatbddModel.enquete" Role="enquete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="theme">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="enquete">
+              <PropertyRef Name="Id_Theme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="questionnairecomplete">
+          <Key>
+            <PropertyRef Name="Id_personne" />
+            <PropertyRef Name="Id_Questionnaire" />
+          </Key>
+          <Property Name="dateReponse" Type="DateTime" />
+          <Property Name="localisation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Id_personne" Type="Int32" Nullable="false" />
+          <Property Name="Id_Questionnaire" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="personne" Relationship="ecostatbddModel.FK_SondageComplete_Id1" FromRole="questionnairecomplete" ToRole="personne" />
+          <NavigationProperty Name="questionnaire" Relationship="ecostatbddModel.FK_SondageComplete_Id_Questionnaire1" FromRole="questionnairecomplete" ToRole="questionnaire" />
+        </EntityType>
+        <Association Name="FK_Questionnaires_Enquete">
+          <End Type="ecostatbddModel.enquete" Role="enquete" Multiplicity="0..1" />
+          <End Type="ecostatbddModel.questionnaire" Role="questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="enquete">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="questionnaire">
+              <PropertyRef Name="Id_enquete" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SondageComplete_Id1">
+          <End Type="ecostatbddModel.personne" Role="personne" Multiplicity="1" />
+          <End Type="ecostatbddModel.questionnairecomplete" Role="questionnairecomplete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personne">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="questionnairecomplete">
+              <PropertyRef Name="Id_personne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SondageComplete_Id_Questionnaire1">
+          <End Type="ecostatbddModel.questionnaire" Role="questionnaire" Multiplicity="1" />
+          <End Type="ecostatbddModel.questionnairecomplete" Role="questionnairecomplete" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="questionnaire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="questionnairecomplete">
+              <PropertyRef Name="Id_Questionnaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ecostatbddModelStoreContainer" CdmEntityContainer="ecostatbddEntities">
+          <EntitySetMapping Name="choixes">
+            <EntityTypeMapping TypeName="ecostatbddModel.choix">
+              <MappingFragment StoreEntitySet="choix">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="contenu" ColumnName="contenu" />
+                <ScalarProperty Name="Id_Question" ColumnName="Id_Question" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="enquetes">
+            <EntityTypeMapping TypeName="ecostatbddModel.enquete">
+              <MappingFragment StoreEntitySet="enquete">
+                <ScalarProperty Name="disponible" ColumnName="disponible" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="titre" ColumnName="titre" />
+                <ScalarProperty Name="Id_Theme" ColumnName="Id_Theme" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personnes">
+            <EntityTypeMapping TypeName="ecostatbddModel.personne">
+              <MappingFragment StoreEntitySet="personne">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="questions">
+            <EntityTypeMapping TypeName="ecostatbddModel.question">
+              <MappingFragment StoreEntitySet="question">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="contenu" ColumnName="contenu" />
+                <ScalarProperty Name="Id_Questionnaire" ColumnName="Id_Questionnaire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="questionnaires">
+            <EntityTypeMapping TypeName="ecostatbddModel.questionnaire">
+              <MappingFragment StoreEntitySet="questionnaire">
+                <ScalarProperty Name="Id_enquete" ColumnName="Id_enquete" />
+                <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="Id_Theme" ColumnName="Id_Theme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sondages">
+            <EntityTypeMapping TypeName="ecostatbddModel.sondage">
+              <MappingFragment StoreEntitySet="sondage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Remuneration" ColumnName="Remuneration" />
+                <ScalarProperty Name="Id_questionnaire" ColumnName="Id_questionnaire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="themes">
+            <EntityTypeMapping TypeName="ecostatbddModel.theme">
+              <MappingFragment StoreEntitySet="theme">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="Id_1" ColumnName="Id_1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="ecostatbddModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="pseudo" ColumnName="pseudo" />
+                <ScalarProperty Name="mdp" ColumnName="mdp" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="visiteurs">
+            <EntityTypeMapping TypeName="ecostatbddModel.visiteur">
+              <MappingFragment StoreEntitySet="visiteur">
+                <ScalarProperty Name="adresseIP" ColumnName="adresseIP" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="choisir" TypeName="ecostatbddModel.choisir" StoreEntitySet="choisir">
+            <EndProperty Name="choix">
+              <ScalarProperty Name="Id" ColumnName="Id_choix" />
+            </EndProperty>
+            <EndProperty Name="personne">
+              <ScalarProperty Name="Id" ColumnName="Id_Personne" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="questionnairecompletes">
+            <EntityTypeMapping TypeName="ecostatbddModel.questionnairecomplete">
+              <MappingFragment StoreEntitySet="questionnairecomplete">
+                <ScalarProperty Name="Id_Questionnaire" ColumnName="Id_Questionnaire" />
+                <ScalarProperty Name="Id_personne" ColumnName="Id_personne" />
+                <ScalarProperty Name="localisation" ColumnName="localisation" />
+                <ScalarProperty Name="dateReponse" ColumnName="dateReponse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
