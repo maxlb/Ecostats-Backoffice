@@ -67,7 +67,7 @@ namespace BackOfficeEcostat.Views
             {               
                 if (sequenceExistante)
                 {
-                    newSequence = ct.UpdateSequence(sequence.Id, titreChoisi.Text, inputDescription.Text, enq.theme.nom, int.Parse(inputNbQ.Text), disponibilite.IsChecked.Value, enq);
+                    newSequence = ct.UpdateSequence(sequence.Id, titreChoisi.Text, inputDescription.Text, enq.theme.nom, int.Parse(inputNbQ.Text), disponibilite.IsChecked.Value);
                 }
                 else
                 {

@@ -10,10 +10,11 @@ namespace BackOfficeEcostat.Model
     {
         private static ecostatbddEntities db = new ecostatbddEntities();
 
-        public questionnaire(string t, string d, theme th, enquete e, int nbQ)
+        public questionnaire(string t, string d, theme th, enquete e, int nbQ, bool dispo)
         {
             Titre = t;
             Description = d;
+            Disponible = dispo;
             theme = db.themes.Find(th.Id);
             enquete1 = e;
             Id_Theme = th.Id;

@@ -69,9 +69,21 @@ namespace BackOfficeEcostat
             return db.questionnaires.Find(q);
         }
 
-        internal questionnaire UpdateSequence(int id, string text1, string text2, string nom, int v, bool value, enquete enq)
+        public questionnaire UpdateSequence(int id, string t, string d, string th, int nbQ, bool dispo)
         {
-            throw new NotImplementedException();
+            questionnaire q = db.questionnaires.Find(id);
+            q.Titre = t;
+            q.Description = d;
+            q.theme = db.themes.Where(the => the.nom == th).FirstOrDefault();
+            q.Id_Theme = db.themes.Where(the => the.nom == th).FirstOrDefault().Id;
+            q.questions = new List<question>(nbQ);
+            foreach (question que in getAllQuestionOfQuestionnaire(id))
+            {
+                q.questions.Add(que);
+            }
+            q.Disponible = dispo;
+            db.SaveChanges();
+            return q;
         }
 
         public List<question> getAllQuestionOfQuestionnaire(int ID)
@@ -84,9 +96,9 @@ namespace BackOfficeEcostat
             return AllQuestions;
         }
 
-        internal questionnaire AddSequence(string text1, string text2, string nom, int v, bool value, enquete enq)
+        public questionnaire AddSequence(string t, string d, string th, int nbQ, bool dispo, enquete enq)
         {
-            throw new NotImplementedException();
+            return new questionnaire(t, d, db.themes.Where(the => the.nom == th).FirstOrDefault(), db.enquetes.Find(enq.Id) ,nbQ, dispo);
         }
 
         public List<choix> getAllChoixOfQuestion(int ID)
