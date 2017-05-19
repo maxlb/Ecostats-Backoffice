@@ -23,22 +23,20 @@ namespace BackOfficeEcostat.Views
     {
         Controller ct;
         questionnaire q;
-        sondage son;
         int nbQ;
         List<StackPanel> ch = new List<StackPanel>();
         int j = 2;
         int k;
         int idQ = 2000;
 
-        public ajouterQS(sondage s, int nb, int i)
+        public ajouterQS(questionnaire q, int nb, int i)
         {
             InitializeComponent();
             ct = new Controller();
-            son = s;
             nbQ = nb;
             k = i;
             erreur.Visibility = Visibility.Hidden;
-            q = ct.getQuestionnaireBySondage(s);
+            q = ct.getQuestionnaireById(q.Id);
             soustitre.Content = "Ajout des questions : question " + i;
             if (i == nb)
             {
@@ -109,7 +107,7 @@ namespace BackOfficeEcostat.Views
                     ct.AddChoix(Newquestion, unChoix);
                 }
             }
-            ajouterQS page = new ajouterQS(son, nbQ, k+1);
+            ajouterQS page = new ajouterQS(q, nbQ, k+1);
             NavigationService.Navigate(page);
         }
 
@@ -157,8 +155,15 @@ namespace BackOfficeEcostat.Views
                 }
             }
 
-            Accueil page = new Accueil();
-            NavigationService.Navigate(page);
+            if (q.Id_enquete.HasValue && ajouterSE.nbrSeq >= ajouterSE.seqActuelle + 1)
+            {
+                NavigationService.Navigate(new ajouterSE(q.enquete1, ajouterSE.nbrSeq, ajouterSE.seqActuelle + 1));
+            }
+            else
+            {
+                NavigationService.Navigate(new Accueil());
+            }
+            
         }
     }
 }

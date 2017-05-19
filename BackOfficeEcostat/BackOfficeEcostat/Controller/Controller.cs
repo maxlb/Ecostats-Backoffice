@@ -69,6 +69,11 @@ namespace BackOfficeEcostat
             return db.questionnaires.Find(q);
         }
 
+        internal questionnaire UpdateSequence(int id, string text1, string text2, string nom, int v, bool value, enquete enq)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<question> getAllQuestionOfQuestionnaire(int ID)
         {
             List<question> AllQuestions = new List<question>();
@@ -77,6 +82,11 @@ namespace BackOfficeEcostat
                 AllQuestions.Add(question);
             }
             return AllQuestions;
+        }
+
+        internal questionnaire AddSequence(string text1, string text2, string nom, int v, bool value, enquete enq)
+        {
+            throw new NotImplementedException();
         }
 
         public List<choix> getAllChoixOfQuestion(int ID)
@@ -228,7 +238,7 @@ namespace BackOfficeEcostat
             return s;
         }
 
-        private sondage getSondageByQuestionnaire(int id)
+        public sondage getSondageByQuestionnaire(int id)
         {
             return db.sondages.Where(s => s.Id_questionnaire == id).FirstOrDefault();
         }

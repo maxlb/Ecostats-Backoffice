@@ -112,7 +112,7 @@ namespace BackOfficeEcostat.Views
                     newSondage = ct.AddSondage(titreChoisi.Text, inputDescription.Text, themes.SelectedItem.ToString(), int.Parse(inputRemuneration.Text), int.Parse(inputNbQ.Text), disponibilite.IsChecked.Value);
                 }
 
-                ajouterQS page = new ajouterQS(newSondage, int.Parse(inputNbQ.Text), 1);
+                ajouterQS page = new ajouterQS(ct.getQuestionnaireBySondage(newSondage), int.Parse(inputNbQ.Text), 1);
                 NavigationService.Navigate(page);
             }
             catch (System.FormatException)
