@@ -24,7 +24,7 @@
         <Button x:Name="modifier" Height="59" Margin="0,0,50,30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="auto" Click="modifier_Click">
             <StackPanel Orientation="Horizontal">
                 <Image x:Name="image1" Source="modifier.png"/>
-                <TextBlock Style="{StaticResource ButtonContent}"><Run Text="Modifier le sondage "/></TextBlock>
+                <TextBlock Style="{StaticResource ButtonContent}"><Run x:Name="textModifier" Text="Modifier le sondage "/></TextBlock>
             </StackPanel>
         </Button>
         <Label x:Name="titreSon" Content="Titre du sondage : " HorizontalAlignment="Left" Margin="103,174,0,0" FontFamily="Segoe WP Semibold" />

@@ -56,16 +56,20 @@ namespace BackOfficeEcostat.Views
             themes.ItemsSource = ct.getAllNomsThemes();
             themesParents.ItemsSource = ct.getAllNomsThemes();
 
-            titreChoisi.Text = newEnquete.titre;
-            inputDescription.Text = newEnquete.description;
-            themes.Text = newEnquete.theme.nom;
-            themesParents.Text = newEnquete.theme.theme2.nom;
-            inputNbQ.Text = newEnquete.questionnaires.Count.ToString();
-            if (newEnquete.disponible)
+            titreChoisi.Text = enquete.titre;
+            inputDescription.Text = enquete.description;
+            themes.Text = enquete.theme.nom;
+            themesParents.Text = enquete.theme.theme2.nom;
+            inputNbQ.Text = enquete.questionnaires.Count.ToString();
+            nbQ.Visibility = Visibility.Hidden;
+            inputNbQ.Visibility = Visibility.Hidden;
+            if (enquete.disponible)
             {
                 disponibilite.IsChecked = true;
             }
             enqueteExistante = true;
+
+            poursuivre.Text = " Valider les modifications";
         }
 
         private void themes_LostMouseCapture(object sender, MouseEventArgs e)
@@ -112,9 +116,16 @@ namespace BackOfficeEcostat.Views
                 {
                     newEnquete = ct.AddEnquete(titreChoisi.Text, inputDescription.Text, themes.SelectedItem.ToString(), int.Parse(inputNbQ.Text), disponibilite.IsChecked.Value);
                 }
-
-                ajouterSE page = new ajouterSE(newEnquete, int.Parse(inputNbQ.Text), 1);
-                NavigationService.Navigate(page);
+                if (enqueteExistante)
+                {
+                    detailEnquete page = new detailEnquete(newEnquete);
+                    NavigationService.Navigate(page);
+                }
+                else
+                {
+                    ajouterSE page = new ajouterSE(newEnquete, int.Parse(inputNbQ.Text), 1);
+                    NavigationService.Navigate(page);
+                }    
             }
             catch (System.FormatException)
             {

@@ -1,0 +1,36 @@
+﻿<Page x:Class="BackOfficeEcostat.Views.modifEnquete"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:BackOfficeEcostat.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="900"
+      Title="modifEnquete">
+
+    <Grid Background="#FFD6D6D6">
+        <Rectangle Fill="Gainsboro" HorizontalAlignment="Stretch" Height="80" Stroke="Black" VerticalAlignment="Top"/>
+
+        <Label  Style="{StaticResource TitleText}" x:Name="titre" Content="SYSTÈME DE GESTION D'ECOSTAT"/>
+
+        <Label  Style="{StaticResource TitleText}" x:Name="soustitre" Content="Consultation et modification des enquêtes" Margin="0,90,0,0"/>
+
+        <Button x:Name="retour" Height="59" Margin="50,0,0,30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="auto" Click="retour_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image x:Name="image" Source="retour.png"/>
+                <TextBlock Style="{StaticResource ButtonContent}"><Run Text="Retour "/></TextBlock>
+            </StackPanel>
+        </Button>
+        <DataGrid x:Name="enquetes" Margin="0,135,0,140" ColumnWidth="Auto" Width="auto" VerticalAlignment="Stretch" >
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Consulter / Modifier">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button HorizontalAlignment="Stretch" Content=">" Click="Button_Click" BorderBrush="White" Background="Gainsboro"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

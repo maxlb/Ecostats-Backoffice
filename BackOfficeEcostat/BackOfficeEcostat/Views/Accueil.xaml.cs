@@ -34,6 +34,8 @@ namespace BackOfficeEcostat.Views
 
         private void modifier_E_Click(object sender, RoutedEventArgs e)
         {
+            modifEnquete page = new modifEnquete();
+            NavigationService.Navigate(page);
         }
 
         private void ajouter_E_Click(object sender, RoutedEventArgs e)

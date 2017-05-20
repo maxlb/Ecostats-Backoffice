@@ -23,27 +23,40 @@ namespace BackOfficeEcostat.Views
     {
         Controller ct;
         int qu;
+        string type;
 
         public detailsSondage(questionnaire q)
         {
             InitializeComponent();
             ct = new Controller();
             qu = q.Id;
-            soustitre.Content += q.Titre;
-            titreSon.Content += q.Titre;
-            descriptionSon.Content += q.Description;
+            type = "e sondage";
+            if (q.Id_enquete.HasValue)
+            {
+                soustitre.Content = "Détails de la séquence " + q.Titre;
+                titreSon.Content = "Titre de la séquence : " + q.Titre;
+                descriptionSon.Content = "Description de la séquence : " + q.Description;
+                questions.Content = "Questions posées et réponses proposées dans la séquence : ";
+                textModifier.Text = "Modifier la séquence ";
+                type = "a séquence";
+            } else
+            {
+                soustitre.Content += q.Titre;
+                titreSon.Content += q.Titre;
+                descriptionSon.Content += q.Description;
+            }
 
             if (q.Disponible)
             {
-                disponible.Content = "Ce sondage est actuellement disponible en ligne.";
+                disponible.Content = "L"+ type + " est actuellement disponible en ligne.";
                 disponible.Foreground = Brushes.Green;
-                disponibilite.Content = "Rendre le sondage immédiatement indisponible";
+                disponibilite.Content = "Rendre l" + type +" immédiatement indisponible.";
             }
             else
             {
-                disponible.Content = "Ce sondage est actuellement indisponible en ligne.";
+                disponible.Content = "L" + type + " est actuellement indisponible en ligne.";
                 disponible.Foreground = Brushes.Red;
-                disponibilite.Content = "Rendre le sondage immédiatement disponible";
+                disponibilite.Content = "Rendre l" + type + " immédiatement disponible.";
             }
 
             List<question> QuestionOfSondage = ct.getAllQuestionOfQuestionnaire(q.Id);
@@ -68,14 +81,32 @@ namespace BackOfficeEcostat.Views
 
         private void retour_Click(object sender, RoutedEventArgs e)
         {
-            modifSondage page = new modifSondage();
-            NavigationService.Navigate(page);
+            if (ct.getQuestionnaireById(qu).Id_enquete.HasValue)
+            {
+                detailEnquete page = new detailEnquete(ct.getQuestionnaireById(qu).enquete1);
+                NavigationService.Navigate(page);
+            }
+            else
+            {
+                modifSondage page = new modifSondage();
+                NavigationService.Navigate(page);
+            }
+
         }
 
         private void modifier_Click(object sender, RoutedEventArgs e)
         {
-            ajouterSondage page = new ajouterSondage(qu);
-            NavigationService.Navigate(page);
+            if (ct.getQuestionnaireById(qu).Id_enquete.HasValue)
+            {
+                ajouterSE page = new ajouterSE(ct.getQuestionnaireById(qu));
+                NavigationService.Navigate(page);
+            }
+            else
+            {
+                ajouterSondage page = new ajouterSondage(qu);
+                NavigationService.Navigate(page);
+            }
+
         }
 
         private void checkBox_Checked(object sender, RoutedEventArgs e)
@@ -83,18 +114,18 @@ namespace BackOfficeEcostat.Views
             if (ct.getQuestionnaireById(qu).Disponible)
             {
                 ct.UpdateDiponibiliteQuestionnaire(qu, false);
-                disponible.Content = "Ce sondage est actuellement indisponible en ligne.";
+                disponible.Content = "L" + type + " est actuellement indisponible en ligne.";
                 disponible.Foreground = Brushes.Red;
                 (sender as CheckBox).IsChecked = false;
-                (sender as CheckBox).Content = "Rendre le sondage immédiatement disponible";
+                (sender as CheckBox).Content = "Rendre l" + type + " immédiatement disponible";
             }
             else
             {
                 ct.UpdateDiponibiliteQuestionnaire(qu, true);
-                disponible.Content = "Ce sondage est actuellement disponible en ligne.";
+                disponible.Content = "L" + type + " est actuellement disponible en ligne.";
                 disponible.Foreground = Brushes.Green;
                 (sender as CheckBox).IsChecked = false;
-                (sender as CheckBox).Content = "Rendre le sondage immédiatement indisponible";
+                (sender as CheckBox).Content = "Rendre l" + type + " immédiatement indisponible";
             }
         }
     }

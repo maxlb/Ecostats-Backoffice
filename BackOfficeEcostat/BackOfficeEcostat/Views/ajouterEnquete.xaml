@@ -42,7 +42,7 @@
 
         <Button x:Name="questions" Height="59" Margin="0,0,50,30" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="auto" Click="questions_Click">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Style="{StaticResource ButtonContent}"><Run Text=" Poursuivre"/></TextBlock>
+                <TextBlock Style="{StaticResource ButtonContent}"><Run x:Name="poursuivre" Text=" Poursuivre"/></TextBlock>
                 <Image x:Name="image1" Source="suivant.png" />
             </StackPanel>
         </Button>

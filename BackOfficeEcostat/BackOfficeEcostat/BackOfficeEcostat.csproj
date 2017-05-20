@@ -174,8 +174,14 @@
     <Compile Include="Views\ajouterSondage.xaml.cs">
       <DependentUpon>ajouterSondage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\detailEnquete.xaml.cs">
+      <DependentUpon>detailEnquete.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\detailsSondage.xaml.cs">
       <DependentUpon>detailsSondage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\modifEnquete.xaml.cs">
+      <DependentUpon>modifEnquete.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\modifSondage.xaml.cs">
       <DependentUpon>modifSondage.xaml</DependentUpon>
@@ -199,6 +205,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\detailEnquete.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\detailsSondage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -218,6 +228,10 @@
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\modifEnquete.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\modifSondage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -155,13 +155,19 @@ namespace BackOfficeEcostat.Views
                 }
             }
 
-            if (quest.Id_enquete.HasValue && ajouterSE.nbrSeq >= ajouterSE.seqActuelle + 1)
+            if (quest.Id_enquete.HasValue && ajouterSE.nbrSeq == 0)
             {
-                NavigationService.Navigate(new ajouterSE(quest.enquete1, ajouterSE.nbrSeq, ajouterSE.seqActuelle + 1));
+                NavigationService.Navigate(new detailEnquete(quest.enquete1));
             }
             else
             {
-                NavigationService.Navigate(new Accueil());
+                if (quest.Id_enquete.HasValue && ajouterSE.nbrSeq >= ajouterSE.seqActuelle + 1)
+                { 
+                    NavigationService.Navigate(new ajouterSE(quest.enquete1, ajouterSE.nbrSeq, ajouterSE.seqActuelle + 1));
+                } else
+                {
+                    NavigationService.Navigate(new Accueil());
+                }
             }
             
         }

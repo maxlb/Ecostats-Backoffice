@@ -64,6 +64,17 @@ namespace BackOfficeEcostat
             return AllSondages;
         }
 
+        public List<enquete> getAllEnquetes()
+        {
+            List<enquete> AllEnquetes = new List<enquete>();
+            foreach (enquete enq in db.enquetes)
+            {
+                AllEnquetes.Add(enq);
+            }
+            return AllEnquetes;
+        }
+
+
         public questionnaire getQuestionnaireById(int q)
         {
             return db.questionnaires.Find(q);

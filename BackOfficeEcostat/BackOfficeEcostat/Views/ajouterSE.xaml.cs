@@ -40,11 +40,11 @@ namespace BackOfficeEcostat.Views
             soustitre.Content += i.ToString();
         }
 
-        public ajouterSE(int id, enquete e, int nb, int i)
+        public ajouterSE(questionnaire q)
         {
             InitializeComponent();
             ct = new Controller();
-            sequence = ct.getQuestionnaireById(id);
+            sequence = ct.getQuestionnaireById(q.Id);
             erreur.Visibility = Visibility.Hidden;
             titreChoisi.Text = sequence.Titre;
             inputDescription.Text = sequence.Description;
@@ -54,10 +54,9 @@ namespace BackOfficeEcostat.Views
                 disponibilite.IsChecked = true;
             }
             sequenceExistante = true;
-            enq = e;
-            nbrSeq = nb;
-            seqActuelle = i;
-            soustitre.Content += i.ToString();
+            soustitre.Content = "Modification de la séquence " + sequence.Titre;
+            nbrSeq = 0;
+            enq = q.enquete1;
         }
 
 
